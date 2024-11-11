@@ -8,3 +8,14 @@
 ```
 npm install express mongoose body-parser bcrypt cors
 ```
+
+### API 엔드포인트
+- 음식점 관련:
+  - GET /restaurants 음식점 목록 조회
+  - GET /restaurants/:id 특정 음식점 상세 정보 조회
+- 리뷰 관련:
+  - POST /restaurants/:id/reviews 특정 음식점에 리뷰 작성
+  - GET /restaurants/:id/reviews 특정 음식점의 리뷰 조회
+- 예약 관련:
+  - POST /restaurants/:id/reservations 특정 음식점 예약 생성
+  - GET /restaurants/:id/reservations 특정 음식점의 예약 가능 시간 조회

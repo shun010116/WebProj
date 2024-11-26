@@ -1,0 +1,21 @@
+<%- include('./include/_header') %>
+  <nav>
+    <a href="/restaurants">Browse Restaurants</a>
+    <a href="/auth/login">Login</a>
+    <a href="/auth/signup">Sign Up</a>
+  </nav>
+  <main>
+    <h2>Welcome to Our Platform!</h2>
+    <p>Search for restaurants, share reviews, and make reservations easily.</p>
+  </main>
+  <tbody>
+    <% restaurants.forEach(restaurant => { %>
+        <tr>
+            <td><%= restaurant.rest_name %></td>
+            <td><%= restaurant.rest_addr %></td>
+            <td><%= restaurant.rest_telno %></td>
+            <td><%= restaurant.category %></td>
+        </tr>
+    <% }); %>
+  </tbody>
+<%- include('./include/_footer') %>

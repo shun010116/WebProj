@@ -1,7 +1,8 @@
 const Restaurant = require('../models/Restaurant');
+const asyncHandler = require("express-async-handler");
 
 // 리뷰 작성
-exports.addReview = async(req, res) => {
+exports.addReview = asyncHandler(async (req, res) => {
     const { rating, content } = req.body;
     const restaurant = await Restaurant.findById(req.params.id);
 
@@ -13,4 +14,4 @@ exports.addReview = async(req, res) => {
 
     await restaurant.save();
     res.status(201).json({ message: 'Review added successfully' });
-};
+});

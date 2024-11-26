@@ -2,7 +2,11 @@ const express = require('express');
 const router = express.Router();
 const restaurantController = require('../controllers/restaurantController');
 
-router.get('/', restaurantController.getRestaurants);
-router.get('/:id', restaurantController.getRestaurantById);
+router.route('/')
+    .get(restaurantController.getRestaurants)
+    .post(restaurantController.createRestaurant);
+router.route('/:id')
+    .get(restaurantController.getRestaurantById)
+    .put(restaurantController.updateRestaurant);
 
 module.exports = router;

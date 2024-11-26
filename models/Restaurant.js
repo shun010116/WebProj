@@ -8,8 +8,9 @@ const reviewSchema = new mongoose.Schema({
 });
 
 const restaurantSchema = new mongoose.Schema({
-    name: String,
-    location: String,
+    rest_name: String,
+    rest_addr: String,
+    rest_telno: String,
     category: String,
     average_rating: { type: Number, default: 0 },
     total_reviews: { type: Number, default: 0 },

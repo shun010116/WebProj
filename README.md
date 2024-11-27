@@ -6,7 +6,7 @@
 
 설치한 npm
 ```
-npm install express mongoose body-parser bcrypt cors
+npm install express mongoose body-parser bcrypt cors ejs dotenv express-async-handler jsonwebtoken
 ```
 
 ### API 엔드포인트

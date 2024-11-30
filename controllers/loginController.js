@@ -13,7 +13,7 @@ const getLogin = (req, res) => {
     });
 };
 
-// 로그인 테스트
+// 로그인
 // POST /auth/login
 const loginUser = asyncHandler(async (req, res) => {
     const { email, password } = req.body;

@@ -1,0 +1,13 @@
+<%- include('./include/_header'); %>
+    <main id="site-login">
+        <h3>로그인</h3>
+        <form action="/auth/login" method="POST" class="login">
+            <label for="email"><b>email</b></label>
+            <input type="text" placeholder="email" name="email" id="email">
+            <label for="password"><b>Password</b></label>
+            <input type="password" placeholder="password" name="password" id="password">
+
+            <button type="submit" class="login-btn">log-in</button>
+        </form>
+    </main>
+<%- include('./include/_footer'); %>

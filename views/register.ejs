@@ -1,0 +1,18 @@
+<%- include('./include/_header') %>
+
+    <main id ='site-register'>
+        <h3>사용자 등록</h3>
+
+        <form action="/auth/signup" method="POST" class="register">
+            <label for="username"><b>"Username</b></label>
+            <input type="text" placeholder="Username" name="username" id="username">
+            <label for="email"><b>"Email address</b></label>
+            <input type="text" placeholder="Email" name="email" id="email">
+            <label for="password"><b>Password</b></label>
+            <input type="password" placeholder="password" name="password" id="password">
+            <label for="password2"><b>Check Password</b></label>
+            <input type="password" placeholder="Check Password" name="password2" id="password2">
+            <input type="submit" value="Register" class="regisetr-btn">
+        </form>
+    </main>
+<%- include('./include/_footer') %>

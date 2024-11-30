@@ -8,11 +8,13 @@ const homeRoutes = require('./routes/homeRoutes');
 const restaurantRoutes = require('./routes/restaurantRoutes');
 const reviewRoutes = require('./routes/reviewRoutes');
 const reservationRoutes = require('./routes/reservationRoutes');
+const loginRoutes = require('./routes/loginRoutes');
 
 const app = express();
 app.use(cors());
 app.use(bodyParser.json());
 app.use(errorhandler)
+app.use(express.urlencoded({ extended: true }));
 
 // EJS 설정
 app.set('view engine', 'ejs');
@@ -29,6 +31,7 @@ app.use('/', homeRoutes);
 app.use('/restaurants', restaurantRoutes);
 app.use('/reviews', reviewRoutes);
 app.use('/reservations', reservationRoutes);
+app.use('/auth', loginRoutes);
 
 const port = 3000;
 app.listen(port, () => {

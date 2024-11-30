@@ -8,7 +8,7 @@ const homeRoutes = require('./routes/homeRoutes');
 const restaurantRoutes = require('./routes/restaurantRoutes');
 const reviewRoutes = require('./routes/reviewRoutes');
 const reservationRoutes = require('./routes/reservationRoutes');
-const loginRoutes = require('./routes/loginRoutes');
+const loginRoutes = require('./routes/userRoutes');
 
 const app = express();
 app.use(cors());

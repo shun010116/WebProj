@@ -1,6 +1,8 @@
 const asyncHandler = require('express-async-handler');
-const User = require("../models/User");
-const bcrypt = require("bcrypt");
+const User = require('../models/User');
+const Reservation = require('../models/Reservation');
+const Restaurant = require('../models/Restaurant');
+const bcrypt = require('bcrypt');
 require('dotenv').config();
 const jwt = require('jsonwebtoken');
 const jwtSecret = process.env.JWT_SECRET_KEY;
@@ -52,16 +54,29 @@ const registerUser = asyncHandler(async (req, res) => {
 });
 
 // 로그아웃
-// GET /logout
+// GET /auth/logout
 const logout = (req, res) => {
     res.clearCookie('token');
     res.redirect('/');
 };
+
+// 마이페이지
+// GET /auth
+const myPage = asyncHandler(async (req, res) => {
+    const token = req.cookies.token;
+    const decoded = jwt.verify(token, jwtSecret);
+    const reservation = await Reservation.find({ user_id : decoded.id });
+    res.render('myPage', {
+        title : "My Page",
+        reservations : reservation
+    })
+});
 
 module.exports = { 
     getLogin,
     loginUser,
     getRegister,
     registerUser,
-    logout
+    logout,
+    myPage
 };

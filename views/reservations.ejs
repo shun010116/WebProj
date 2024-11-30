@@ -4,9 +4,11 @@
     <h3>예약하기</h3>
 
     <form action="/reservations/<%= reservation %>" method="POST" class="reservation">
-        <label for="numGuests"><b>"Num Guests</b></label>
+        <label for="reservationPerson"><b>Reservatino Person</b></label>
+        <input type="text" placeholder="reservationPerson" name="reservation_person" id="reservationPerson">
+        <label for="numGuests"><b>Num Guests</b></label>
         <input type="number" min="1" placeholder="NumGuests" name="num_guests" id="numGuests">
-        <label for="date"><b>"Date"</b></label>
+        <label for="date"><b>Date</b></label>
         <input type="datetime-local" placeholder="Date" name="reservation_date" id="currentDate">
         <input type="submit" value="Reservation" class="reservation-btn">
     </form>

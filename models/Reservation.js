@@ -4,8 +4,9 @@ const reservationSchema = new  mongoose.Schema(
     {
     restaurant_id: { type: mongoose.Schema.Types.ObjectId, ref: 'Restaurant' },
     user_id: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
-    reservation_date: Date,
-    num_guests: Number,
+    reservation_person: { type: String, required: true },
+    reservation_date: { type: Date, required: true },
+    num_guests: { type: Number, required: true }
     },
     {
         timestamps: true,

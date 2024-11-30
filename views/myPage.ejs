@@ -1,0 +1,26 @@
+<%- include('./include/_header') %>
+
+<main id ='site-myPage'>
+    <h3>My Page</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Restaurants</th>
+                <th>Person Who made Reservation</th>
+                <th>Date</th>
+                <th>Number of Guests</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% reservations.forEach(reservation => { %>
+                <tr>
+                    <td><%= reservation.restaurant_id %></td>
+                    <td><%= reservation.reservation_person %></td>
+                    <td><%= reservation.reservation_date %></td>
+                    <td><%= reservation.num_guests %></td>
+                </tr>
+            <% }); %>
+        </tbody>
+    </table>
+
+<%- include('./include/_footer') %>

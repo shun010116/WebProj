@@ -18,8 +18,11 @@ const makeReservation = (req, res) => {
 const createReservation = asyncHandler(async (req, res) => {
     const token = req.cookies.token;
     const decoded = jwt.verify(token, jwtSecret);
-    const { reservation_date, num_guests } = req.body;
-    const reservation = new Reservation({ restaurant_id: req.params.id, user_id: decoded.id, reservation_date, num_guests });
+    const { reservation_person, reservation_date, num_guests } = req.body;
+    if(!reservation_person || !reservation_date || !num_guests) {
+        return res.status(400).send("필수값을 입력해주세요.");
+    }
+    const reservation = new Reservation({ restaurant_id: req.params.id, user_id: decoded.id, reservation_person, reservation_date, num_guests });
     await reservation.save();
     res.status(201).json({ message: 'Reservation created successfully' });
 });

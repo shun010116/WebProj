@@ -11,5 +11,4 @@ router.route('/:id')
     .get(restaurantController.getRestaurantById)
     .put(restaurantController.updateRestaurant);
 
-
 module.exports = router;

@@ -1,0 +1,15 @@
+<%- include('./include/_header') %>
+
+<main id ='site-reservation'>
+    <h3>예약하기</h3>
+
+    <form action="/reservations/<%= reservation %>" method="POST" class="reservation">
+        <label for="numGuests"><b>"Num Guests</b></label>
+        <input type="number" min="1" placeholder="NumGuests" name="num_guests" id="numGuests">
+        <label for="date"><b>"Date"</b></label>
+        <input type="date" placeholder="Date" name="reservation_date" id="date">
+        <input type="submit" value="Reservation" class="reservation-btn">
+    </form>
+</main>
+
+<%- include('./include/_footer') %>

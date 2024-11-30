@@ -61,7 +61,7 @@
         </tr>
     </thead>
     <tbody>
-        <% restaurants.forEach(restaurant => { %>
+        <% results.forEach(restaurant => { %>
         <tr>
             <td><%= restaurant.rest_name %></td>
             <td><%= restaurant.average_rating %></td>
@@ -70,7 +70,7 @@
             <td><%= restaurant.rest_telno %></td>
             
             <td>
-                <a href="/reservations/<%= restaurant._id %>" class="btn-reservation" title="예약">
+                <a href="/reservation/<%= restaurant._id %>" class="btn-reservation" title="예약">
                 <button type="button" class="btn btn-warning">예약</button></a>
             </td>
         </tr>

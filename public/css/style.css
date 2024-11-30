@@ -1,45 +1,86 @@
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    text-align: center;
-    background-color: #f4f4f9;
-  }
-  header {
-    background-color: #333;
-    color: #fff;
-    padding: 1rem 0;
-  }
-  header h1 {
-    margin: 0;
-  }
-  nav {
-    margin: 1rem 0;
-  }
-  nav a {
-    margin: 0 1rem;
-    text-decoration: none;
-    color: #007bff;
-  }
-  nav a:hover {
-    text-decoration: underline;
-  }
-  main {
-    padding: 2rem;
-  }
-  footer {
-    margin-top: 2rem;
-    background-color: #333;
-    color: #fff;
-    padding: 1rem 0;
-  }
-  table {
-    border-collapse: collapse;
-    margin-left: auto;
-    margin-right: auto;
-    width: 500px;
-  }
-  td, th {
-    text-align: center;
-    border-bottom: 1px solid #000;
-  }
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  background-color: #ffff;
+}
+header {
+  background-color: #26ed3ae1;
+  color: #fff;
+  padding: 1rem 0;
+}
+header h1 {
+  margin: 0;
+}
+nav {
+  margin: 1rem 0;
+}
+nav a {
+  margin: 0 1rem;
+  text-decoration: none;
+  color: #007bff;
+}
+nav a:hover {
+  text-decoration: underline;
+}
+main {
+  padding: 2rem;
+}
+footer {
+  margin-top: 2rem;
+  background-color: #E1F5A9;
+  color: #fff;
+  padding: 1rem 0;
+}
+.table-category {
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  width: 500px;
+}
+.image-container {
+  text-align: center;
+}
+.image-container .caption {
+  margin-top: -10px;
+  font-size: 15px;
+}
+.image-category {
+  width: 180px;
+  height: 180px;
+}
+.a-default {
+  text-decoration-line: none;
+  color: black;
+  
+}
+
+hr {
+  background-color: #26ed3ae1;
+  height: 10px;
+  border: 0px;
+}
+
+.search {
+  width: 300px;
+  height: 100px;
+}
+.search input {
+  width: 80%;
+  height: 30px;
+  font-size: 18px;
+  border: none;
+  border-bottom: 1px black solid;
+}
+
+.search button {
+  font-size: 18px;
+  border: none;
+  background-color: green;
+  width: 50px;
+  height: 30px;
+  border-radius: 15px;
+  color: #fff;
+  cursor: pointer;
+}

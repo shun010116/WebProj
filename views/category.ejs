@@ -1,6 +1,6 @@
 <%- include('./include/_header') %>
 
-<table>
+<table class="table table-hover">
     <thead>
         <tr>
             <th>Restaurants</th>
@@ -18,7 +18,8 @@
             <td><%= restaurant.rest_telno %></td>
             <td><%= restaurant.average_rating %></td>
             <td>
-                <a href="/reservations/<%= restaurant._id %>" class="btn-reservation" title="예약"><i>예약</i></a>
+                <a href="/reservations/<%= restaurant._id %>" class="btn-reservation" title="예약">
+                <button type="button" class="btn btn-warning">예약</button></a>
             </td>
         </tr>
         <% }); %>

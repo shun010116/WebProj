@@ -7,12 +7,4 @@ const userSchema = new mongoose.Schema({
     email: { type: String, required: true, unique: true },
 });
 
-// 비밀번호 암호화
-// userSchema.pre('save', async (next) => {
-//     if(this.isModified('password')) {
-//         this.password = await bcrypt.hash(this.password, 10);
-//     }
-//     next();
-// });
-
 module.exports = mongoose.model('User', userSchema);

@@ -39,7 +39,7 @@ body {
     margin-right: auto;
     width: 500px;
   }
-  td {
+  td, th {
     text-align: center;
-    border: 1px solid #000;
+    border-bottom: 1px solid #000;
   }

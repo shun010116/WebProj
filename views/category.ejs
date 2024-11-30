@@ -1,0 +1,28 @@
+<%- include('./include/_header') %>
+
+<table>
+    <thead>
+        <tr>
+            <th>Restaurants</th>
+            <th>Address</th>
+            <th>tel-no</th>
+            <th>Rating</th>
+            <th>&nbsp;</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% restaurants.forEach(restaurant => { %>
+        <tr>
+            <td><%= restaurant.rest_name %></td>
+            <td><%= restaurant.rest_addr %></td>
+            <td><%= restaurant.rest_telno %></td>
+            <td><%= restaurant.average_rating %></td>
+            <td>
+                <a href="/reservation/<%= restaurant._id %>" class="btn-reservation" title="예약"><i>예약</i></a>
+            </td>
+        </tr>
+        <% }); %>
+    </tbody>
+</table>
+
+<%- include('./include/_footer') %>

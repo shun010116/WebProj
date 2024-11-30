@@ -7,7 +7,7 @@ const getRestaurants = asyncHandler(async (req, res) => {
     const restaurants = await Restaurant.find();
     res.render("restaurants", {
         title : "Restaurant Review & Reservation",
-        restaurants : restaurants
+        restaurant : restaurants
     });
 });
 
@@ -18,6 +18,17 @@ const getRestaurantById = asyncHandler(async (req, res) => {
     if(!restaurant) return res.status(404).json({ message: 'Restaurant not found' });
     res.status(200).send(restaurant);
 });
+
+// 특정 카데코리
+// GET /restaurants/:category
+const getRestaurantsByCategory = asyncHandler(async (req, res) => {
+    const restaurant = await Restaurant.find({ category : req.params.category });
+    if(!restaurant) return res.status(404).json({ message: 'Restaurant not found' });
+    res.render("category", {
+        title: req.params.category,
+        restaurants : restaurant
+    })
+})
 
 // 레스토랑 추가
 // POST /restaurants
@@ -64,6 +75,8 @@ const deleteRestaurant = asyncHandler(async (req, res) => {
 module.exports = { 
     getRestaurants,
     getRestaurantById,
+    getRestaurantsByCategory,
     createRestaurant,
-    updateRestaurant
+    updateRestaurant,
+    deleteRestaurant
 };

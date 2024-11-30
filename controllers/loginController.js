@@ -51,9 +51,17 @@ const registerUser = asyncHandler(async (req, res) => {
     }
 });
 
+// 로그아웃
+// GET /logout
+const logout = (req, res) => {
+    res.clearCookie('token');
+    res.redirect('/');
+};
+
 module.exports = { 
     getLogin,
     loginUser,
     getRegister,
-    registerUser
+    registerUser,
+    logout
 };

@@ -1,0 +1,11 @@
+<%- include('./include/_header') %>
+
+<tbody>
+    <% restaurants.forEach(restaurant => { %>
+        <tr>
+            <td><%= restaurant.rest_name%></td>
+        </tr>
+    <% }); %>
+  </tbody>
+
+<%- include('./include/_footer') %>

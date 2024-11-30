@@ -25,7 +25,7 @@ const loginUser = asyncHandler(async (req, res) => {
     if(!isMatch) {
         return res.status(401).json({ message: "비밀번호가 일치하지 않습니다." });
     }
-    const token = jwt.sign({ id: user._id }, jwtSecret);
+    const token = jwt.sign({ id: user._id }, jwtSecret, { expiresIn: '1h' });
     res.cookie('token', token, { httpOnly: true });
     res.redirect('/')
 });

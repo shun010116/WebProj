@@ -3,7 +3,7 @@ require('dotenv').config();
 const jwtSecret = process.env.JWT_SECRET_KEY;
 
 const checkLogin = async (req, res, next) => {
-    res.setHeader("Cache-control', 'no-cache, no-store, must-revalidate");
+    res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
 
     const token = req.cookies.token;
     if(!token) {

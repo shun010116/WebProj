@@ -1,11 +1,11 @@
-const express = require("express");
+const express = require('express');
 const router = express.Router();
-const { 
-    getHompage,
-    getSearch
- } = require("../controllers/homeController");
+const homeController = require('../controllers/homeController');
+const cookieParser = require('cookie-parser');
 
-router.route("/").get(getHompage);
-router.route("/search").get(getSearch);
+router.use(cookieParser());
+
+router.route("/").get(homeController.getHompage);
+router.route("/search").get(homeController.getSearch);
 
 module.exports = router;

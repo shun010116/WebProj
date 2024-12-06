@@ -8,6 +8,7 @@ const getRestaurants = asyncHandler(async (req, res) => {
     const restaurants = await Restaurant.find();
     res.render("restaurants", {
         title : "Restaurant Review & Reservation",
+        checkLogin : req.cookies.token,
         restaurant : restaurants
     });
 });
@@ -24,6 +25,7 @@ const getRestaurantById = asyncHandler(async (req, res) => {
 
     res.render('restaurant', {
         title : restaurant.rest_name,
+        checkLogin : req.cookies.token,
         restaurant : restaurant,
         reviews : restaurant.reviews
     })
@@ -39,6 +41,7 @@ const getRestaurantsByCategory = asyncHandler(async (req, res) => {
     
     res.render("category", {
         title: req.params.category,
+        checkLogin : req.cookies.token,
         restaurants : restaurant
     });
 });

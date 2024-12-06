@@ -1,4 +1,8 @@
-<%- include('./include/_header') %>
+<% if (checkLogin) { %>
+    <%- include('./include/_loginHeader') %>
+<% } else { %>
+    <%- include('./include/_header') %>
+<% } %>
 
 <table class="table table-hover">
     <thead>

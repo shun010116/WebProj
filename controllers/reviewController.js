@@ -10,6 +10,7 @@ const getReviews = asyncHandler(async (req, res) => {
     })
     res.render('review', {
         title : 'Add Reivew',
+        checkLogin : req.cookies.token,
         restaurant : restaurant.rest_name,
         restaurantId : req.params.id,
     })

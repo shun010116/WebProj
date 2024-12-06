@@ -1,4 +1,9 @@
-<%- include('./include/_header') %>
+<% if (checkLogin) { %>
+    <%- include('./include/_loginHeader') %>
+<% } else { %>
+    <%- include('./include/_header') %>
+<% } %>
+
   <main>
       <table class="table-category">
         <tr> 
@@ -66,7 +71,7 @@
             <td>
               <a href="/restaurants/<%= restaurant.category %>/<%= restaurant._id %>"><%= restaurant.rest_name %></a>
             </td>
-            <td><%= restaurant.average_rating %></td>
+            <td><%= restaurant.average_rating.toFixed(1) %></td>
             <td><%= restaurant.category %></td>
             <td><%= restaurant.rest_addr %></td>
             <td><%= restaurant.rest_telno %></td>

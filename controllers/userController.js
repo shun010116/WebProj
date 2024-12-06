@@ -85,6 +85,7 @@ const myPage = asyncHandler(async (req, res) => {
     // console.log('Final reservations:', reservations);  // 최종적으로 EJS에 전달할 예약 데이터
     res.render('myPage', {
         title : "My Page",
+        checkLogin : req.cookies.token,
         reservations : reservations  // EJS에서 reservations 배열을 사용할 수 있음
     });
 });

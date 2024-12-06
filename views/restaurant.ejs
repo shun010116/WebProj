@@ -1,5 +1,9 @@
-<%- include('./include/_header') %>
- 
+<% if (checkLogin) { %>
+  <%- include('./include/_loginHeader') %>
+<% } else { %>
+  <%- include('./include/_header') %>
+<% } %>
+
 <!-- 레스토랑 정보 보여주기 -->
 <h2>식당 정보</h2>
 <table class="table table-hover">

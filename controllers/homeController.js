@@ -7,6 +7,7 @@ const getHompage = asyncHandler(async (req, res) => {
     const restaurants = await Restaurant.find().sort({ "average_rating": -1 });
     res.render("home", {
         title : "Restaurants",
+        checkLogin : req.cookies.token,
         restaurants : restaurants
     });
 });
@@ -21,6 +22,7 @@ const getSearch = asyncHandler(async (req, res) => {
     
     res.render("search", {
         title : "Restaurants/search",
+        checkLogin : req.cookies.token,
         results : results
     })
 })

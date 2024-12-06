@@ -8,7 +8,7 @@ const verifyToken = asyncHandler(async(req, res, next) => {
 
     if(!token) {
         res.status(401);
-        throw new Error('Access denied. No token provided.');
+        req.user = null;
     }
 
     try {

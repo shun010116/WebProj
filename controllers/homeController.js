@@ -4,7 +4,7 @@ const Restaurant = require('../models/Restaurant');
 // Get homepage
 // GET /
 const getHompage = asyncHandler(async (req, res) => {
-    const restaurants = await Restaurant.find().sort({ "average_rating": -1 });
+    const restaurants = await Restaurant.Restaurant.find().sort({ "average_rating": -1 });
     res.render("home", {
         title : "Restaurants",
         restaurants : restaurants
@@ -13,7 +13,7 @@ const getHompage = asyncHandler(async (req, res) => {
 
 const getSearch = asyncHandler(async (req, res) => {
     const { search } = req.query;
-    results = await Restaurant.find({ 
+    results = await Restaurant.Restaurant.find({ 
       rest_name: {
         "$regex": new RegExp(search), '$options': 'i'
       } 

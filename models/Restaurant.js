@@ -17,4 +17,10 @@ const restaurantSchema = new mongoose.Schema({
     reviews: [reviewSchema],
 });
 
-module.exports = mongoose.model('Restaurant', restaurantSchema);
+const Review = mongoose.model('Review', reviewSchema);
+const Restaurant = mongoose.model('Restaurant', restaurantSchema);
+
+module.exports = {
+    Review,
+    Restaurant
+}

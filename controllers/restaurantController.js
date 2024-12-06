@@ -4,7 +4,7 @@ const asyncHandler = require("express-async-handler");
 // 음식점 목록 조회
 // GET /restaurants
 const getRestaurants = asyncHandler(async (req, res) => {
-    const restaurants = await Restaurant.find();
+    const restaurants = await Restaurant.Restaurant.find();
     res.render("restaurants", {
         title : "Restaurant Review & Reservation",
         restaurant : restaurants
@@ -14,7 +14,7 @@ const getRestaurants = asyncHandler(async (req, res) => {
 // 특정 음식점 상세 조회
 // GET /restaurants/:id
 const getRestaurantById = asyncHandler(async (req, res) => {
-    const restaurant = await Restaurant.findById(req.params.id);
+    const restaurant = await Restaurant.Restaurant.findById(req.params.id);
     if(!restaurant) return res.status(404).json({ message: 'Restaurant not found' });
     res.status(200).send(restaurant);
 });
@@ -22,7 +22,7 @@ const getRestaurantById = asyncHandler(async (req, res) => {
 // 특정 카데코리
 // GET /restaurants/:category
 const getRestaurantsByCategory = asyncHandler(async (req, res) => {
-    const restaurant = await Restaurant.find({ category : req.params.category });
+    const restaurant = await Restaurant.Restaurant.find({ category : req.params.category });
     if(!restaurant) return res.status(404).json({ message: 'Restaurant not found' });
     res.render("category", {
         title: req.params.category,
@@ -38,7 +38,7 @@ const createRestaurant = asyncHandler(async (req, res) => {
     if(!rest_name || !rest_addr || !rest_telno || !category ) {
         return res.status(400).send("필수값을 입력해주세요.");
     }
-    const restaurant = await Restaurant.create({
+    const restaurant = await Restaurant.Restaurant.create({
         rest_name,
         rest_addr,
         rest_telno,
@@ -52,7 +52,7 @@ const createRestaurant = asyncHandler(async (req, res) => {
 const updateRestaurant = asyncHandler(async (req, res) => {
     const id = req.params.id;
     const { rest_name, rest_addr, rest_telno, category } = req.body;
-    const updateRestaurant = await Restaurant.findByIdAndUpdate(
+    const updateRestaurant = await Restaurant.Restaurant.findByIdAndUpdate(
         id,
         { rest_name, rest_addr, rest_telno, category },
         {new: true }
@@ -63,12 +63,12 @@ const updateRestaurant = asyncHandler(async (req, res) => {
 // 레스토랑 삭제
 // DELETE /restaurants/:id
 const deleteRestaurant = asyncHandler(async (req, res) => {
-    const restaurant = await Restaurant.findById(req,params.id);
+    const restaurant = await Restaurant.Restaurant.findById(req,params.id);
     if(!restaurant) {
         res.status(404);
         throw new Error("Contact Not Found");
     }
-    await Restaurant.deleteOne();
+    await Restaurant.Restaurant.deleteOne();
     res.status(200).send(`Delete Restaurant for ID: ${req.params.id}`);
 })
 

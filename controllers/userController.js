@@ -73,7 +73,7 @@ const myPage = asyncHandler(async (req, res) => {
     const uri = process.env.DB_CONNECT; // .env 파일에서 URI 가져오기
 
     mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
-        .then(() => console.log('MongoDB 연결 성공!'))
+        .then()
         .catch(err => console.error('MongoDB 연결 오류:', err));
 
     mongoose.set('debug', true);  // MongoDB 쿼리 로그를 콘솔에 출력
@@ -81,16 +81,16 @@ const myPage = asyncHandler(async (req, res) => {
     async function getReservationsByUserId(userId) {
         try {
             // user_id에 해당하는 Reservation 데이터를 찾고, restaurant_id를 populate하여 rest_name 가져오기
-            console.log('Looking for reservations for user:', userId);  // userId 확인
+            // console.log('Looking for reservations for user:', userId);  // userId 확인
             const reservations = await Reservation.find({ user_id: userId })
                 .populate('restaurant_id', 'rest_name') // restaurant_id 필드를 populate하여 rest_name만 가져오기
                 .exec();
 
             // reservations 결과 확인
-            console.log('Fetched reservations:', reservations);  // 예약 데이터 출력
+            // console.log('Fetched reservations:', reservations);  // 예약 데이터 출력
             return reservations;
         } catch (err) {
-            console.error('예약 데이터를 가져오는 중 오류 발생:', err);
+            // console.error('예약 데이터를 가져오는 중 오류 발생:', err);
             throw new Error('Database query failed');
         }
     }
@@ -98,7 +98,7 @@ const myPage = asyncHandler(async (req, res) => {
     // user_id에 해당하는 예약 데이터 가져오기
     const reservations = await getReservationsByUserId(decoded.id);
 
-    console.log('Final reservations:', reservations);  // 최종적으로 EJS에 전달할 예약 데이터
+    // console.log('Final reservations:', reservations);  // 최종적으로 EJS에 전달할 예약 데이터
     res.render('myPage', {
         title: "My Page",
         reservations: reservations,  // EJS에서 reservations 배열을 사용할 수 있음

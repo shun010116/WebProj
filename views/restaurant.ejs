@@ -37,7 +37,7 @@
   <tbody>
     <% reviews.forEach(review => { %>
       <tr>
-        <td><%= review.user_id %></td>
+        <td><%= review.user_id.username %></td>
         <td><%= review.rating %></td>
         <td><%= review.content %></td>
       </tr>

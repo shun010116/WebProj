@@ -18,7 +18,7 @@ const getRestaurantById = asyncHandler(async (req, res) => {
     const restaurant = await Restaurant.findById(req.params.id);
     if(!restaurant) return res.status(404).json({ message: 'Restaurant not found' });
 
-    console.log(restaurant.reviews[0].user_id);
+    await User.populate(restaurant.reviews, 'user_id');
 
     res.render('restaurant', {
         title : restaurant.rest_name,

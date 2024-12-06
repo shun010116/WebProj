@@ -1,18 +1,24 @@
 <%- include('./include/_header') %>
 
     <main id ='site-register'>
-        <h3>사용자 등록</h3>
 
         <form action="/auth/register" method="POST" class="register">
-            <label for="username"><b>Username</b></label>
-            <input type="text" placeholder="Username" name="username" id="username">
-            <label for="email"><b>Email address</b></label>
-            <input type="text" placeholder="Email" name="email" id="email">
-            <label for="password"><b>Password</b></label>
-            <input type="password" placeholder="password" name="password" id="password">
-            <label for="password2"><b>Check Password</b></label>
-            <input type="password" placeholder="Check Password" name="password2" id="password2">
-            <input type="submit" value="Register" class="regisetr-btn">
+            
+            <table class="table-register">
+                <tr>
+                    <th><h2>회원가입</h2></th>
+                </tr>
+                <tr><td>&nbsp;&nbsp;&nbsp;이름</td><td></td></tr>
+                <tr><th><input type="text" class="text-register" name="username"></th></tr>
+                <tr><td>&nbsp;&nbsp;&nbsp;이메일</td></tr>
+                <tr><th><input type="text" class="text-register" name="email"></th></tr>
+                <tr><td>&nbsp;&nbsp;&nbsp;비밀번호</td></tr>
+                <tr><th><input type="password" class="text-register" name="password"></th></tr>
+                <tr><td>&nbsp;&nbsp;&nbsp;비밀번호 확인</td></tr>
+                <tr><th><input type="password" class="text-register" name="password2"></th></tr>
+
+                <tr><th><input type="submit" value="가입하기" class="btn-register"></th></tr>
+            </table>
         </form>
     </main>
     

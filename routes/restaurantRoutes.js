@@ -7,7 +7,7 @@ router.route('/')
     .post(restaurantController.createRestaurant);
 router.route('/:category')
     .get(restaurantController.getRestaurantsByCategory);
-router.route('/:id')
+router.route('/:category/:id')
     .get(restaurantController.getRestaurantById)
     .put(restaurantController.updateRestaurant);
 

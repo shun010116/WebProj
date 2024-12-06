@@ -1,5 +1,6 @@
 const Restaurant = require('../models/Restaurant');
 const asyncHandler = require("express-async-handler");
+const User = require('../models/User');
 
 // 음식점 목록 조회
 // GET /restaurants
@@ -12,11 +13,18 @@ const getRestaurants = asyncHandler(async (req, res) => {
 });
 
 // 특정 음식점 상세 조회
-// GET /restaurants/:id
+// GET /restaurants/:category/:id
 const getRestaurantById = asyncHandler(async (req, res) => {
     const restaurant = await Restaurant.findById(req.params.id);
     if(!restaurant) return res.status(404).json({ message: 'Restaurant not found' });
-    res.status(200).send(restaurant);
+
+    console.log(restaurant.reviews[0].user_id);
+
+    res.render('restaurant', {
+        title : restaurant.rest_name,
+        restaurant : restaurant,
+        reviews : restaurant.reviews
+    })
 });
 
 // 특정 카데코리

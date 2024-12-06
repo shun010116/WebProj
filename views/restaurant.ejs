@@ -1,0 +1,48 @@
+<%- include('./include/_header') %>
+ 
+<!-- 레스토랑 정보 보여주기 -->
+<table class="table table-hover">
+  <thead>
+      <tr>
+          <th>Restaurants</th>
+          <th>Address</th>
+          <th>tel-no</th>
+          <th>Rating</th>
+          <th>&nbsp;</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><%= restaurant.rest_name %></td>
+          <td><%= restaurant.rest_addr %></td>
+          <td><%= restaurant.rest_telno %></td>
+          <td><%= restaurant.average_rating %></td>
+          <td>
+              <a href="/reservations/<%= restaurant._id %>" class="btn-reservation" title="예약">
+              <button type="button" class="btn btn-warning">예약</button></a>
+          </td>
+      </tr>
+  </tbody>
+</table>
+
+<!-- review 보여주기 -->
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Rating</th>
+      <th>content</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% reviews.forEach(review => { %>
+      <tr>
+        <td><%= review.user_id %></td>
+        <td><%= review.rating %></td>
+        <td><%= review.content %></td>
+      </tr>
+    <% }); %>
+  </tbody>
+</table>
+
+<%- include('./include/_footer') %>

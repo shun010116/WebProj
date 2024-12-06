@@ -1,12 +1,12 @@
 body {
   font-family: Arial, sans-serif;
-  margin: 0;
+  margin: auto;
   padding: 0;
   text-align: center;
-  background-color: #ffff;
+  background-color: #D4BDAC;
 }
 header {
-  background-color: #26ed3ae1;
+  background-color: #88C273;
   color: #fff;
   padding: 1rem 0;
 }
@@ -29,10 +29,11 @@ nav a:hover {
 }
 main {
   padding: 2rem;
+  background-color: #FFF1DB;
 }
 footer {
   margin-top: 2rem;
-  background-color: #E1F5A9;
+  background-color: #536493;
   color: #fff;
   padding: 1rem 0;
 }
@@ -93,6 +94,12 @@ hr {
   cursor: pointer;
 }
 
+
+.table-reservation {
+  width: 200px;
+  height: 400px;
+  margin: auto auto;
+}
 
 
 /*//////////////////////////////////////////////////////////////////*/

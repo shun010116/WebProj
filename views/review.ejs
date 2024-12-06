@@ -2,7 +2,7 @@
 
 <!-- Main -->
 <main id="site-main">
-    <p> <h2><%= restaurant %><br>리뷰 작성</h2> </p>
+    <p> <h2>리뷰 작성</h2> </p>
     <br><br>
 
     <form action="/reviews/<%= restaurantId %>" method="POST" id='add-review'>
@@ -31,10 +31,9 @@
         <tr><td>
           <div class="form-floating">
             <span>리뷰 내용</span>
-            <textarea class="form-control" placeholder="Leave a comment here", name="content" id="floatingTextarea2" style="height: 100px"></textarea>
-            <label for="floatingTextarea2">Comments</label>
+            <textarea class="form-control" name="content" id="floatingTextarea2" style="height: 100px"></textarea>
 
-          <tr><th><button type="submit">작성 완료</button></th></tr>
+          <tr><th><button type="submit" class="btn btn-warning">작성 완료</button></th></tr>
           </div>
         </td></tr>
       </table>

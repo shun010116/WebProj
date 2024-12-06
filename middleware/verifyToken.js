@@ -4,7 +4,6 @@ require('dotenv').config();
 const jwtSecret = process.env.JWT_SECRET_KEY;
 
 const verifyToken = asyncHandler(async(req, res, next) => {
-    const authHeader = req.header('Authorization');
     const token = req.cookies.token;
 
     if(!token) {

@@ -1,8 +1,20 @@
 const Restaurant = require('../models/Restaurant');
 const asyncHandler = require("express-async-handler");
 
+// 리뷰 조회
+// GET /review/:id
+const getReviews = asyncHandler(async (req, res) => {
+    const restaurant = await Restaurant.findById(req.params.id);
+    if(!restaurant) return res.status(404).json({ message: 'Restaurant not found'});
+    res.render('review', {
+        title : 'Add Reivew',
+        restaurant : restaurant.rest_name,
+        restaurantId : req.params.id
+    })
+})
+
 // 리뷰 작성
-// 
+// POST /review/:id
 const addReview = asyncHandler(async (req, res) => {
     const { rating, content } = req.body;
     const restaurant = await Restaurant.findById(req.params.id);
@@ -18,5 +30,6 @@ const addReview = asyncHandler(async (req, res) => {
 });
 
 module.exports = {
+    getReviews,
     addReview
 }

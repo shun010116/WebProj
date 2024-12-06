@@ -20,6 +20,10 @@
                     <td><%= reservation.reservation_person %></td>
                     <td><%= reservation.reservation_date %></td>
                     <td><%= reservation.num_guests %></td>
+                    <td>
+                        <a href="/reviews/<%= reservation.restaurant_id._id %>" class="btn-reservation" title="예약">
+                        <button type="button" class="btn btn-warning">리뷰 작성하기</button></a>
+                    </td>
                 </tr>
             <% }); %>
         </tbody>

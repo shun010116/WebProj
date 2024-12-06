@@ -13,6 +13,9 @@ header {
 header h1 {
   margin: 0;
 }
+h2 {
+  text-align: center;
+}
 nav {
   margin: 1rem 0;
 }
@@ -33,6 +36,10 @@ footer {
   color: #fff;
   padding: 1rem 0;
 }
+table th {
+  text-align: center;
+}
+
 .table-category {
   border-collapse: collapse;
   margin-left: auto;
@@ -65,6 +72,7 @@ hr {
 .search {
   width: 300px;
   height: 100px;
+  margin: auto;
 }
 .search input {
   width: 80%;
@@ -83,4 +91,100 @@ hr {
   border-radius: 15px;
   color: #fff;
   cursor: pointer;
+}
+
+
+
+/*//////////////////////////////////////////////////////////////////*/
+/* 회원가입 페이지  */
+.table-register {
+  width: 280px;
+  height: 550px;
+  margin: auto auto;      
+}
+.email {
+  width: 127px;
+  height: 32px;
+  font-size: 15px;
+  border: 0;
+  border-color: lightgray;
+  border-radius: 15px;
+  outline: none;
+  padding-left: 10px;
+  background-color: rgb(233,233,233);
+}
+.text-register {
+  width: 250px;
+  height: 32px;
+  font-size: 15px;
+  border: 0;
+  border-radius: 15px;
+  outline: none;
+  padding-left: 10px;
+  background-color: rgb(233,233,233);
+}
+.btn-register {
+  width: 200px;
+  height: 32px;
+  font-size: 15px;
+  border: 0;
+  border-radius: 15px;
+  outline: none;
+  padding-left: 10px;
+  background-color: rgb(164, 199, 255);
+}
+/* .btn:active {
+  width: 262px;
+  height: 32px;
+  font-size: 15px;
+  border: 0;
+  border-radius: 15px;
+  outline: none;
+  padding-left: 10px;
+  background-color: rgb(61, 135, 255);
+} */
+
+
+
+/*//////////////////////////////////////////////////////////////////*/
+/* 리뷰 작성 페이지 */
+.table-review {
+  width: 100px;
+  height: 70px;
+  margin: auto auto;      
+}
+.table-writing {
+  width: 300px;
+  height: 100px;
+  margin: auto auto;
+}
+.star-rating {
+  display: flex;
+  flex-direction: row-reverse;
+  font-size: 2.25rem;
+  line-height: 2.5rem;
+  justify-content: space-around;
+  padding: 0 0.2em;
+  text-align: center;
+  width: 5em;
+}
+ 
+.star-rating input {
+  display: none;
+}
+ 
+.star-rating label {
+  -webkit-text-fill-color: transparent; /* Will override color (regardless of order) */
+  -webkit-text-stroke-width: 2.3px;
+  -webkit-text-stroke-color: #2b2a29;
+  cursor: pointer;
+}
+ 
+.star-rating :checked ~ label {
+  -webkit-text-fill-color: gold;
+}
+ 
+.star-rating label:hover,
+.star-rating label:hover ~ label {
+  -webkit-text-fill-color: #fff58c;
 }

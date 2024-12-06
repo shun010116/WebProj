@@ -13,8 +13,10 @@
         </thead>
         <tbody>
             <% reservations.forEach(reservation => { %>
+
+
                 <tr>
-                    <td><%= reservation.restaurant_id %></td>
+                    <td><%= reservation.restaurant_id.rest_name %></td>
                     <td><%= reservation.reservation_person %></td>
                     <td><%= reservation.reservation_date %></td>
                     <td><%= reservation.num_guests %></td>

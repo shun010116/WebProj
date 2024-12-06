@@ -8,7 +8,7 @@ const homeRoutes = require('./routes/homeRoutes');
 const restaurantRoutes = require('./routes/restaurantRoutes');
 const reviewRoutes = require('./routes/reviewRoutes');
 const reservationRoutes = require('./routes/reservationRoutes');
-const loginRoutes = require('./routes/userRoutes');
+const userRoutes = require('./routes/userRoutes');
 
 const app = express();
 app.use(cors());
@@ -31,7 +31,7 @@ app.use('/', homeRoutes);
 app.use('/restaurants', restaurantRoutes);
 app.use('/reviews', reviewRoutes);
 app.use('/reservations', reservationRoutes);
-app.use('/auth', loginRoutes);
+app.use('/auth', userRoutes);
 
 const port = 3000;
 app.listen(port, () => {

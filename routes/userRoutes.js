@@ -11,7 +11,7 @@ router.route('/')
 router.route('/login')
     .get(userController.getLogin)
     .post(userController.loginUser);
-router.route('/signup')
+router.route('/register')
     .get(userController.getRegister)
     .post(userController.registerUser);
 router.route('/logout')

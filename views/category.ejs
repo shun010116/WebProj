@@ -18,7 +18,7 @@
             </td>
             <td><%= restaurant.rest_addr %></td>
             <td><%= restaurant.rest_telno %></td>
-            <td><%= restaurant.average_rating %></td>
+            <td><%= restaurant.average_rating.toFixed(1) %></td>
             <td>
                 <a href="/reservations/<%= restaurant._id %>" class="btn-reservation" title="예약">
                 <button type="button" class="btn btn-warning">예약</button></a>

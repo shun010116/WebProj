@@ -19,7 +19,8 @@ const createReservation = asyncHandler(async (req, res) => {
     }
     const reservation = new Reservation({ restaurant_id: req.params.id, user_id: req.user.id, reservation_person, reservation_date, num_guests });
     await reservation.save();
-    res.status(201).json({ message: 'Reservation created successfully' });
+    // res.status(201).json({ message: 'Reservation created successfully' });
+    res.status(201).redirect('/');
 });
 
 module.exports = {

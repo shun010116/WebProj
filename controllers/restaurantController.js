@@ -16,7 +16,9 @@ const getRestaurants = asyncHandler(async (req, res) => {
 // GET /restaurants/:category/:id
 const getRestaurantById = asyncHandler(async (req, res) => {
     const restaurant = await Restaurant.findById(req.params.id);
-    if(!restaurant) return res.status(404).json({ message: 'Restaurant not found' });
+    if(!restaurant) return res.status(404).render('404', {
+        title : '404'
+    });
 
     await User.populate(restaurant.reviews, 'user_id');
 
@@ -31,7 +33,10 @@ const getRestaurantById = asyncHandler(async (req, res) => {
 // GET /restaurants/:category
 const getRestaurantsByCategory = asyncHandler(async (req, res) => {
     const restaurant = await Restaurant.find({ category : req.params.category });
-    if(!restaurant) return res.status(404).json({ message: 'Restaurant not found' });
+    if(!restaurant) return res.status(404).render('404', {
+        title : '404'
+    });
+    
     res.render("category", {
         title: req.params.category,
         restaurants : restaurant

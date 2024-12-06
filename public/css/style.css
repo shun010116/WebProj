@@ -3,10 +3,10 @@ body {
   margin: auto;
   padding: 0;
   text-align: center;
-  background-color: #D4BDAC;
+  background-color: #CBF1F5;
 }
 header {
-  background-color: #88C273;
+  background-color: #E3FDFD;
   color: #fff;
   padding: 1rem 0;
 }
@@ -29,11 +29,10 @@ nav a:hover {
 }
 main {
   padding: 2rem;
-  background-color: #FFF1DB;
+  background-color: #CBF1F5;
 }
 footer {
-  margin-top: 2rem;
-  background-color: #536493;
+  background-color: #71C9CE;
   color: #fff;
   padding: 1rem 0;
 }
@@ -194,4 +193,8 @@ hr {
 .star-rating label:hover,
 .star-rating label:hover ~ label {
   -webkit-text-fill-color: #fff58c;
+}
+
+table a {
+  text-decoration: none;
 }

@@ -20,11 +20,11 @@ const loginUser = asyncHandler(async (req, res) => {
     const { email, password } = req.body;
     const user = await User.findOne({ email });
     if(!user) {
-        return res.status(401).json({ message: "일치하는 이용자가 없습니다." });
+        return res.send("<script>alert('Cannot find user.');location.href='/auth/login'</script>");
     }
     const isMatch = await bcrypt.compare(password, user.password);
     if(!isMatch) {
-        return res.status(401).json({ message: "비밀번호가 일치하지 않습니다." });
+        return res.send("<script>alert('Wrong password.');location.href='/auth/login'</script>");
     }
     const token = jwt.sign({ id: user._id }, jwtSecret, { expiresIn: '1h' });
     res.cookie('token', token, { httpOnly: true });
@@ -46,7 +46,7 @@ const registerUser = asyncHandler(async (req, res) => {
     if(password === password2) {
         const hashedPassword = await bcrypt.hash(password, 10);
         const user = await User.create({ username, email, password: hashedPassword });
-        res.send(201).json({ message: "Register Successful", user });
+        res.send(201).redirect('/auth/login');
     } else {
         res.send("Register Failed");
     }

@@ -63,7 +63,9 @@
     <tbody>
         <% restaurants.forEach(restaurant => { %>
         <tr>
-            <td><%= restaurant.rest_name %></td>
+            <td>
+              <a href="/restaurants/<%= restaurant.category %>/<%= restaurant._id %>"><%= restaurant.rest_name %></a>
+            </td>
             <td><%= restaurant.average_rating %></td>
             <td><%= restaurant.category %></td>
             <td><%= restaurant.rest_addr %></td>

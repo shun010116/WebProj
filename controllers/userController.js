@@ -1,6 +1,7 @@
 const asyncHandler = require('express-async-handler');
 const User = require('../models/User');
 const Reservation = require('../models/Reservation');
+const Restaurant = require('../models/Restaurant');
 const bcrypt = require('bcrypt');
 require('dotenv').config();
 const jwt = require('jsonwebtoken');
@@ -26,7 +27,7 @@ const loginUser = asyncHandler(async (req, res) => {
     if(!isMatch) {
         return res.send("<script>alert('Wrong password.');location.href='/auth/login'</script>");
     }
-    const token = jwt.sign({ id: user._id }, jwtSecret, { expiresIn: '1h' });
+    const token = jwt.sign({ id: user._id }, jwtSecret, /*{ expiresIn: '1h' }*/);
     res.cookie('token', token, { httpOnly: true });
     res.redirect('/')
 });
@@ -62,31 +63,17 @@ const logout = (req, res) => {
 // 마이페이지
 // GET /auth
 const myPage = asyncHandler(async (req, res) => {
-    async function getReservationsByUserId(userId) {
-        try {
-            // user_id에 해당하는 Reservation 데이터를 찾고, restaurant_id를 populate하여 rest_name 가져오기
-            // console.log('Looking for reservations for user:', userId);  // userId 확인
-            const reservations = await Reservation.find({ user_id: userId })
-                .populate('restaurant_id', 'rest_name') // restaurant_id 필드를 populate하여 rest_name만 가져오기
-                .exec();
+    const reservations = await Reservation.find({ user_id : req.user.id}).populate('restaurant_id', 'rest_name').sort({ reservation_date : -1 });;
+    const restaurant = await Restaurant.find({ reviews : { $elemMatch: { user_id : req.user.id } }});
+    
+    await User.populate(restaurant.reviews, 'user_id');
 
-            // reservations 결과 확인
-            // console.log('Fetched reservations:', reservations);  // 예약 데이터 출력
-            return reservations;
-        } catch (err) {
-            // console.error('예약 데이터를 가져오는 중 오류 발생:', err);
-            throw new Error('Database query failed');
-        }
-    }
-
-    // user_id에 해당하는 예약 데이터 가져오기
-    const reservations = await getReservationsByUserId(req.user.id);
-
-    // console.log('Final reservations:', reservations);  // 최종적으로 EJS에 전달할 예약 데이터
     res.render('myPage', {
         title : "My Page",
-        checkLogin : req.cookies.token,
-        reservations : reservations  // EJS에서 reservations 배열을 사용할 수 있음
+        token : req.cookies.token,
+        reservations : reservations,  // EJS에서 reservations 배열을 사용할 수 있음
+        restaurants : restaurant,
+        userId : req.user.id
     });
 });
 

@@ -8,6 +8,7 @@ router.use(cookieParser());
 
 router.route('/:id')
     .get(reviewController.getReviews)
-    .post(verifyToken, reviewController.addReview);
+    .post(verifyToken, reviewController.addReview)
+    .delete(reviewController.deleteReview);
 
 module.exports = router;

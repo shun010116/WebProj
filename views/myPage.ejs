@@ -1,4 +1,4 @@
-<% if (checkLogin) { %>
+<% if (token) { %>
     <%- include('./include/_loginHeader') %>
 <% } else { %>
     <%- include('./include/_header') %>
@@ -18,8 +18,6 @@
         </thead>
         <tbody>
             <% reservations.forEach(reservation => { %>
-
-
                 <tr>
                     <td><%= reservation.restaurant_id.rest_name %></td>
                     <td><%= reservation.reservation_person %></td>
@@ -30,6 +28,39 @@
                         <button type="button" class="btn btn-warning">리뷰 작성하기</button></a>
                     </td>
                 </tr>
+            <% }); %>
+        </tbody>
+    </table>
+    
+    <!-- review 보여주기 -->
+    <h3>My Review</h3>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Restaurant</th>
+                <th>Rating</th>
+                <th>content</th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <% restaurants.forEach(restaurant => { %>
+                <% restaurant.reviews.forEach(review => { %>
+                    <% if(userId === review.user_id._id.toString()) { %>
+                    <tr>
+                        <td><%= restaurant.rest_name %></td>
+                        <td><%= review.rating %></td>
+                        <td><%= review.content %></td>
+                        <form action="/reviews/<%= review._id %>?_method=UPDATE" method="POST">
+                        <td><button type="submit" class="btn btn-warning">리뷰 수정하기</button></td>
+                        </form>
+                        <form action="/reviews/<%= review._id %>?_method=DELETE" method="POST">
+                        <td><button type="submit" class="btn btn-warning">리뷰 지우기</button></td>
+                        </form>
+                    </tr>
+                    <% } %>
+                <% }); %>
             <% }); %>
         </tbody>
     </table>

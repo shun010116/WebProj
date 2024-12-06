@@ -10,7 +10,7 @@ const getReviews = asyncHandler(async (req, res) => {
     })
     res.render('review', {
         title : 'Add Reivew',
-        checkLogin : req.cookies.token,
+        token : req.cookies.token,
         restaurant : restaurant.rest_name,
         restaurantId : req.params.id,
     })
@@ -37,7 +37,23 @@ const addReview = asyncHandler(async (req, res) => {
     res.status(201).redirect(url);
 });
 
+// 리뷰 삭제
+// DELETE //review/:id
+const deleteReview = asyncHandler(async (req, res) => {
+    const reviewId = mongoose.Types.ObjectId(req.query.id);
+    const restaurant = await Restaurant.findOne({ 'reviews._id': reviewId });
+
+    if(restaurant) {
+        restaurant.reviews.pull({ _id: reviewId });
+        await restaurant.save();
+    }
+
+
+    res.redirect("back");
+});
+
 module.exports = {
     getReviews,
-    addReview
+    addReview,
+    deleteReview
 }

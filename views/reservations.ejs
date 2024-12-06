@@ -27,7 +27,7 @@
 
 <script>
     let dateElement = document.getElementById('currentDate');
-    let date = new Date(new Date().getTime() - new Date().getTimezoneOffset() * 60000).toISOString().slice(0, -5);
+    let date = new Date(new Date().getTime() - new Date().getTimezoneOffset() * 60000).toISOString().slice(0, 16);
     dateElement.value = date;
     dateElement.setAttribute("min", date);
 

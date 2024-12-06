@@ -1,4 +1,4 @@
-<% if (checkLogin) { %>
+<% if (token) { %>
   <%- include('./include/_loginHeader') %>
 <% } else { %>
   <%- include('./include/_header') %>
@@ -30,6 +30,7 @@
   </tbody>
 </table>
 <div style="height: 50px;"></div>
+
 <!-- review 보여주기 -->
 <h2>리뷰</h2>
 <table class="table table-hover">

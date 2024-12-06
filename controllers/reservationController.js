@@ -1,8 +1,5 @@
 const Reservation = require('../models/Reservation');
 const asyncHandler = require('express-async-handler');
-// const jwt = require('jsonwebtoken');
-// require('dotenv').config();
-// const jwtSecret = process.env.JWT_SECRET_KEY;
 
 // 예약 페이지
 // GET /reservations/:id

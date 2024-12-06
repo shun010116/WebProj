@@ -63,21 +63,6 @@ const logout = (req, res) => {
 // 마이페이지
 // GET /auth
 const myPage = asyncHandler(async (req, res) => {
-    const token = req.cookies.token;
-    const decoded = jwt.verify(token, jwtSecret);
-
-    const mongoose = require('mongoose');
-    require('dotenv').config();
-
-    // MongoDB URI
-    const uri = process.env.DB_CONNECT; // .env 파일에서 URI 가져오기
-
-    mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
-        .then()
-        .catch(err => console.error('MongoDB 연결 오류:', err));
-
-    mongoose.set('debug', true);  // MongoDB 쿼리 로그를 콘솔에 출력
-
     async function getReservationsByUserId(userId) {
         try {
             // user_id에 해당하는 Reservation 데이터를 찾고, restaurant_id를 populate하여 rest_name 가져오기
@@ -96,7 +81,7 @@ const myPage = asyncHandler(async (req, res) => {
     }
 
     // user_id에 해당하는 예약 데이터 가져오기
-    const reservations = await getReservationsByUserId(decoded.id);
+    const reservations = await getReservationsByUserId(req.user.id);
 
     // console.log('Final reservations:', reservations);  // 최종적으로 EJS에 전달할 예약 데이터
     res.render('myPage', {

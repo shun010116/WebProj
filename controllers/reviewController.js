@@ -57,9 +57,7 @@ const getUpdateReview = asyncHandler(async (req, res) => {
 // PUT /review/updtae/:id
 const updateReview = asyncHandler(async (req, res) => {
     const reviewId = req.query.review_id;
-    const restaurant = await Restaurant.findById(req.params.id);
     const { rating, content } = req.body;
-    console.log(restaurant.reviews)
 
     const updateReview = await Restaurant.findOneAndUpdate(
         { _id: req.params.id, 'reviews._id': reviewId },
@@ -71,6 +69,10 @@ const updateReview = asyncHandler(async (req, res) => {
         },
         { new: true }
     );
+
+    const restaurant = await Restaurant.findById(req.params.id);
+    restaurant.average_rating = restaurant.reviews.reduce((acc, review) => acc + review.rating, 0) / restaurant.total_reviews;
+    await restaurant.save();
 
     res.redirect("/auth");
 });

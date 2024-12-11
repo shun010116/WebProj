@@ -57,12 +57,12 @@ const getUpdateReview = asyncHandler(async (req, res) => {
 // PUT /review/updtae/:id
 const updateReview = asyncHandler(async (req, res) => {
     const reviewId = req.query.review_id;
-    const restaurant = await Restaurant.findOne({ _id: req.params.id, 'reviews._id': reviewId });
+    const restaurant = await Restaurant.findById(req.params.id);
     const { rating, content } = req.body;
     console.log(restaurant.reviews)
 
-    const updateReview = await restaurant.reviews.findByIdAndUpdate(
-        reviewId,
+    const updateReview = await Restaurant.findOneAndUpdate(
+        { _id: req.params.id, 'reviews._id': reviewId },
         {
             $set: {
                 'reviews.$.rating': rating,

@@ -52,8 +52,10 @@
                         <td><%= restaurant.rest_name %></td>
                         <td><%= review.rating %></td>
                         <td><%= review.content %></td>
-                        <form action="/reviews/<%= review._id %>?_method=UPDATE" method="POST">
-                        <td><button type="submit" class="btn btn-warning">리뷰 수정하기</button></td>
+                        <td>
+                            <a href="/reviews/update/<%= restaurant._id %>?review_id=<%= review._id %>" class="btn-reservation" title="예약">
+                            <button type="button" class="btn btn-warning">리뷰 수정하기</button></a>
+                        </td>
                         </form>
                         <form action="/reviews/<%= review._id %>?_method=DELETE" method="POST">
                         <td><button type="submit" class="btn btn-warning">리뷰 지우기</button></td>

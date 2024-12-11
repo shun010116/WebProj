@@ -3,6 +3,7 @@ const errorhandler = require("./middleware/errorhandler");
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const dbConnect = require('./config/dbConnect');
+const methodOverride = require('method-override');
 
 const homeRoutes = require('./routes/homeRoutes');
 const restaurantRoutes = require('./routes/restaurantRoutes');
@@ -22,6 +23,9 @@ app.set('views', './views');
 
 // Static File
 app.use(express.static('public'));
+
+// PUT, DELETE
+app.use(methodOverride('_method'));
 
 // MongoDB Connect
 dbConnect();
